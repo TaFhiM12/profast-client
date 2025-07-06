@@ -1,0 +1,65 @@
+[
+  {
+    "question": "How does your platform ensure data security?",
+    "answer": "We employ end-to-end encryption, regular security audits, and comply with industry standards like GDPR and SOC 2. Your data is protected with military-grade AES-256 encryption both in transit and at rest.",
+    "category": "Security"
+  },
+  {
+    "question": "What integration options do you offer?",
+    "answer": "Our platform provides API access, webhooks, and native integrations with popular tools like Slack, Salesforce, and Zapier. We also offer custom integration solutions for enterprise clients.",
+    "category": "Integrations",
+    "highlight": true
+  },
+  {
+    "question": "Can I upgrade or downgrade my plan at any time?",
+    "answer": "Yes, you can change your plan at any time. Upgrades take effect immediately with prorated charges, while downgrades apply at your next billing cycle.",
+    "category": "Billing"
+  },
+  {
+    "question": "How quickly can I get support if I have an issue?",
+    "answer": "Our average response time is under 2 hours for priority support (Enterprise plans) and under 12 hours for standard plans. We also offer 24/7 chat support for critical issues.",
+    "category": "Support"
+  },
+  {
+    "question": "Do you offer custom solutions for large enterprises?",
+    "answer": "Absolutely. Our enterprise team can design custom workflows, dedicated infrastructure, and tailored onboarding to meet your organization's specific requirements.",
+    "category": "Enterprise",
+    "highlight": true
+  },
+  {
+    "question": "What areas do you currently deliver to?",
+    "answer": "We currently offer delivery services across all major cities and towns in the country, with plans to expand internationally soon.",
+    "category": "Delivery"
+  },
+  {
+    "question": "How can I track my delivery in real-time?",
+    "answer": "Once your order is placed, you’ll receive a tracking link via SMS or email. You can monitor your package in real-time from pickup to drop-off.",
+    "category": "Tracking",
+    "highlight": true
+  },
+  {
+    "question": "What is the average delivery time?",
+    "answer": "Our standard delivery time is 1–2 business days. Express delivery within 24 hours is available in select regions.",
+    "category": "Delivery"
+  },
+  {
+    "question": "Do you support same-day or urgent deliveries?",
+    "answer": "Yes, we offer same-day delivery options for select locations. Urgent deliveries can be arranged based on package size and destination.",
+    "category": "Delivery"
+  },
+  {
+    "question": "How are shipping costs calculated?",
+    "answer": "Shipping costs are based on the package weight, dimensions, and distance. You can use our pricing calculator to estimate your cost before placing an order.",
+    "category": "Pricing"
+  },
+  {
+    "question": "What if my package is delayed or lost?",
+    "answer": "In the rare case of delays or lost packages, our support team will assist you in resolving the issue and, if applicable, provide a full refund or compensation.",
+    "category": "Support"
+  },
+  {
+    "question": "Do you offer contactless delivery?",
+    "answer": "Yes, to ensure safety and convenience, we offer fully contactless delivery. You can choose this option at checkout.",
+    "category": "Safety"
+  }
+]

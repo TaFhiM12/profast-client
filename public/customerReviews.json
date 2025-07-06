@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Sarah Johnson",
+    "content": "Working with this team has been transformative for our business. Their strategic insights and execution excellence have driven remarkable growth across all our key metrics.",
+    "title": "Chief Executive Officer",
+    "company": "TechVision Inc.",
+    "rating": 5,
+    "image": "👩‍💼"
+  },
+  {
+    "name": "Michael Chen",
+    "content": "The level of professionalism and innovative thinking they bring to every project is outstanding. They consistently deliver results that exceed expectations.",
+    "title": "VP of Operations",
+    "company": "Global Dynamics",
+    "rating": 5,
+    "image": "👨‍💼"
+  },
+  {
+    "name": "Emily Rodriguez",
+    "content": "Their data-driven approach and attention to detail have helped us optimize our processes and achieve significant cost savings while improving quality.",
+    "title": "Chief Technology Officer",
+    "company": "Innovation Labs",
+    "rating": 5,
+    "image": "👩‍💻"
+  },
+  {
+    "name": "David Thompson",
+    "content": "Exceptional service and strategic guidance. They understand our industry challenges and provide solutions that create lasting competitive advantages.",
+    "title": "Managing Director",
+    "company": "Capital Ventures",
+    "rating": 5,
+    "image": "👨"
+  },
+  {
+    "name": "Lisa Wang",
+    "content": "The partnership has been invaluable. Their expertise in digital transformation and change management has positioned us perfectly for future growth.",
+    "title": "Chief Marketing Officer",
+    "company": "Future Systems",
+    "rating": 5,
+    "image": "👩‍🚀"
+  },
+  {
+    "name": "James Wilson",
+    "content": "Outstanding results and professional service. They delivered beyond our expectations and helped us achieve our strategic objectives ahead of schedule.",
+    "title": "Chief Financial Officer",
+    "company": "Growth Partners",
+    "rating": 5,
+    "image": "👨‍💼"
+  },
+  {
+    "name": "Maria Garcia",
+    "content": "Their innovative approach and deep industry knowledge have been instrumental in our digital transformation journey and market expansion.",
+    "title": "VP of Strategy",
+    "company": "NextGen Solutions",
+    "rating": 5,
+    "image": "👩‍💼"
+  },
+  {
+    "name": "Robert Kim",
+    "content": "Exceptional team with remarkable expertise. They provided solutions that not only solved our immediate challenges but positioned us for long-term success.",
+    "title": "Chief Operating Officer",
+    "company": "Tech Innovations",
+    "rating": 5,
+    "image": "👨‍💻"
+  },
+  {
+    "name": "Jennifer Lee",
+    "content": "Their strategic guidance and execution excellence have been game-changing for our organization. Highly recommend their professional services.",
+    "title": "Managing Partner",
+    "company": "Elite Consulting",
+    "rating": 5,
+    "image": "👩‍🚀"
+  },
+  {
+    "name": "Nathan Brooks",
+    "content": "Their team provided valuable insights and helped us reimagine our entire product strategy. Their input was critical to our success.",
+    "title": "Head of Product",
+    "company": "Visionary Labs",
+    "rating": 5,
+    "image": "👨‍🔬"
+  },
+  {
+    "name": "Aisha Patel",
+    "content": "From the first meeting to final delivery, the team showed professionalism, creativity, and attention to detail. We couldn't be happier.",
+    "title": "Director of Marketing",
+    "company": "BrightEdge Solutions",
+    "rating": 5,
+    "image": "👩‍🎨"
+  },
+  {
+    "name": "Tom Becker",
+    "content": "Their ability to quickly understand our needs and deliver outstanding results sets them apart from other service providers we've used.",
+    "title": "CEO",
+    "company": "BlueHorizon Ventures",
+    "rating": 5,
+    "image": "👨‍💼"
+  },
+  {
+    "name": "Grace Tan",
+    "content": "We’ve seen measurable improvements in both efficiency and team morale since partnering with them. Highly recommended!",
+    "title": "Operations Manager",
+    "company": "Streamline Co.",
+    "rating": 5,
+    "image": "👩‍🔧"
+  },
+  {
+    "name": "Carlos Diaz",
+    "content": "They approach every challenge with a solutions-first mindset. Their clarity and speed have been a breath of fresh air.",
+    "title": "Project Manager",
+    "company": "AgileWorks",
+    "rating": 5,
+    "image": "👨‍💻"
+  },
+  {
+    "name": "Olivia Price",
+    "content": "Their passion and dedication to client success is unmatched. They really go the extra mile every time.",
+    "title": "Innovation Lead",
+    "company": "CreativeMatrix",
+    "rating": 5,
+    "image": "👩‍🎓"
+  },
+  {
+    "name": "Daniel Roberts",
+    "content": "Their collaborative approach and transparent communication helped us feel confident and in control every step of the way.",
+    "title": "Senior Engineer",
+    "company": "BuildWise",
+    "rating": 5,
+    "image": "👷‍♂️"
+  },
+  {
+    "name": "Sophia Turner",
+    "content": "They provided a seamless experience from start to finish. The end product exceeded all expectations.",
+    "title": "Design Manager",
+    "company": "PixelForge",
+    "rating": 5,
+    "image": "👩‍💻"
+  },
+  {
+    "name": "Leo Martinez",
+    "content": "Excellent experience! The project was delivered ahead of schedule and under budget without compromising quality.",
+    "title": "Finance Director",
+    "company": "CoreValue Inc.",
+    "rating": 5,
+    "image": "👨‍💼"
+  },
+  {
+    "name": "Hannah Scott",
+    "content": "They’re more than just consultants — they’re true partners in our growth journey. We’ll definitely work with them again.",
+    "title": "Business Development Lead",
+    "company": "GrowthHub",
+    "rating": 5,
+    "image": "👩‍💼"
+  }
+]
