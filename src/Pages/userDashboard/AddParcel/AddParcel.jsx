@@ -4,6 +4,8 @@ import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import useTrackingLogger from "../../../Hooks/useTrackingLogger";
+import LoginPage from './../../Authentication/Login';
 
 const AddParcelForm = () => {
   const [showToast, setShowToast] = useState(false);
@@ -12,6 +14,7 @@ const AddParcelForm = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const { logTracking } = useTrackingLogger();
 
   const {
     register,
@@ -146,7 +149,7 @@ const AddParcelForm = () => {
 
   const handleConfirm = async () => {
     setIsSubmitting(true);
-
+    const randomTrackingId = `ZAP-${Math.floor(100000 + Math.random() * 900000)}`;
     try {
       const parcelData = {
         ...watchedValues,
@@ -156,12 +159,14 @@ const AddParcelForm = () => {
         createdBy: user?.email,
         createdAt: new Date().toISOString(),
         payment_status: "unpaid",
+        tracking_id : randomTrackingId
       };
 
-      const randomNum = Math.floor(100000 + Math.random() * 900000);
-      parcelData.tracking_id = `ZAP-${randomNum}`;
+      
+      
 
       const response = await axiosSecure.post("/parcels", parcelData);
+
 
       if (response.data.insertedId) {
         await Swal.fire({
@@ -177,6 +182,15 @@ const AddParcelForm = () => {
           confirmButtonText: "View My Parcels",
           confirmButtonColor: "#10b981",
         });
+
+        await logTracking(
+          {
+            tracking_id: parcelData.tracking_id,
+            status : "parcel_created",
+            details : `created by ${user.displayName}`,
+            updated_by : user?.email
+          }
+        )
 
         reset();
         navigate("/dashboard/myParcels");

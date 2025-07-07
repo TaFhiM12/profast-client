@@ -4,12 +4,13 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router";
 import useAuth from "./../../Hooks/useAuth";
 import Swal from "sweetalert2";
-import  axios  from 'axios';
+import axios from "axios";
 import useAxios from "../../Hooks/useAxios";
 
 const Register = () => {
-  const { setUser, createUser, signInWithGoogle, updateProfileUser } = useAuth();
-  const [profilePic , setProfile] = useState('');
+  const { setUser, createUser, signInWithGoogle, updateProfileUser } =
+    useAuth();
+  const [profilePic, setProfile] = useState("");
   const axiosInstance = useAxios();
   const navigate = useNavigate();
   const {
@@ -21,27 +22,26 @@ const Register = () => {
   const onSubmit = (data) => {
     //create user with email and password
     createUser(data.email, data.password)
-      .then( async() => {
-
+      .then(async () => {
         const userInfo = {
-          email : data.email,
-          role : 'user',
-          created_at : new Date().toISOString(),
-          last_log_in : new Date().toISOString(),
-        }
+          email: data.email,
+          role: "user",
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
 
-        await axiosInstance.post('/users' , userInfo);
+        await axiosInstance.post("/users", userInfo);
 
         const profile = {
           displayName: data.name,
-          photoURL: profilePic
+          photoURL: profilePic,
         };
         updateProfileUser(profile)
           .then(() => {
             setUser((prevUser) => ({
               ...prevUser,
               displayName: data.name,
-              photoURL: profilePic
+              photoURL: profilePic,
             }));
           })
           .catch((error) => {
@@ -74,17 +74,17 @@ const Register = () => {
   const handleSignIn = () => {
     //sign in with google
     signInWithGoogle()
-      .then(async(result) => {
+      .then(async (result) => {
         const data = result.user;
         const userInfo = {
-          email : data.email,
-          role : 'user',
-          created_at : new Date().toISOString(),
-          last_log_in : new Date().toISOString(),
-        }
+          email: data.email,
+          role: "user",
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
 
-        await axiosInstance.post('/users' , userInfo);
-        
+        await axiosInstance.post("/users", userInfo);
+
         navigate("/");
         Swal.fire({
           title: "Login Successful",
@@ -103,13 +103,18 @@ const Register = () => {
       });
   };
 
-  const handleImageUpload =async( e )=> {
+  const handleImageUpload = async (e) => {
     const image = e.target.files[0];
     const formData = new FormData();
-    formData.append('image' , image);
-    const response = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_UPLOAD_KEY}`,formData)
-    setProfile(response.data.data.url)
-  }
+    formData.append("image", image);
+    const response = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_IMAGE_UPLOAD_KEY
+      }`,
+      formData
+    );
+    setProfile(response.data.data.url);
+  };
   return (
     <div>
       <div className="p-10">
@@ -129,7 +134,7 @@ const Register = () => {
                   Name
                 </label>
                 <input
-                  {...register("name", { 
+                  {...register("name", {
                     required: {
                       value: true,
                       message: "This field is required",
@@ -205,6 +210,7 @@ const Register = () => {
                   Password
                 </label>
                 <input
+                  type="password"
                   {...register("password", {
                     required: {
                       value: true,

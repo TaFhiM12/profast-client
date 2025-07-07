@@ -118,6 +118,7 @@ const LoginPage = () => {
                 Password
               </label>
               <input
+                  type="password"
                   {...register("password", {
                     required: {
                       value: true,

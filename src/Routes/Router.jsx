@@ -11,7 +11,6 @@ import AddParcel from "../Pages/userDashboard/AddParcel/AddParcel";
 import AllMyParcel from "../Pages/userDashboard/AllMyParcel/AllMyParcel";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ParcelDetails from "../Pages/userDashboard/ParcelDetails/ParcelDetails";
-import DashboardIndex from "../Pages/userDashboard/Dashboard/DashboardIndex";
 import PrivateRoute from './PrivateRoute';
 import Payment from "../Pages/userDashboard/Payments/Payment";
 import PaymentHistory from "../Pages/userDashboard/PaymentHistory/PaymentHistory";
@@ -26,6 +25,7 @@ import AssignRider from "../Pages/AssignRider/AssignRider";
 import PendingDeliveries from "../Pages/PendingDeliveries/PendingDeliveries";
 import RiderRoute from "./RiderRoute";
 import CompletedDeleveries from "../Pages/CompletedDeliveries/CompletedDeleveries";
+import DashBoard from "../Pages/userDashboard/Dashboard/DashBoard";
 
 export const router = createBrowserRouter([
     {
@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DashboardIndex/>
+                element: <DashBoard/>
             },
             {
                 path: 'addParcel',

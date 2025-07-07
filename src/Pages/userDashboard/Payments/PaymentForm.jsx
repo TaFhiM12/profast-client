@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loading from "../../../Components/Loading";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import useTrackingLogger from "../../../Hooks/useTrackingLogger";
 
 const PaymentForm = () => {
   const { user } = useAuth();
@@ -16,6 +17,7 @@ const PaymentForm = () => {
   const { parcelId } = useParams();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const { logTracking } = useTrackingLogger();
 
   const { data: parcel = {}, isPending } = useQuery({
     queryKey: ["parcel", parcelId],
@@ -74,27 +76,31 @@ const PaymentForm = () => {
         } else {
           setError("");
           if (result.paymentIntent.status === "succeeded") {
-           
             // mark parcel paid
             const paymentData = {
               parcelId,
               email: user?.email,
               amount: parcel.cost,
               transactionId: result.paymentIntent.id,
-              paymentMethod: result.paymentIntent.payment_method_types[0]
+              paymentMethod: result.paymentIntent.payment_method_types[0],
             };
-            
-            const paymentRes =  await axiosSecure.post('/payments' , paymentData);
-            if(paymentRes.data.parcelUpdated){
-              await Swal.fire ({
-                icon: 'success',
-                title: 'Payment Successfully',
-                html: `<strong>Transaction ID</strong><code>${result.paymentIntent.id}</code>`,
-                confirmButtonText: 'Go to My Parcels',
-              })
-              navigate('/dashboard/myParcels')
-            }
 
+            const paymentRes = await axiosSecure.post("/payments", paymentData);
+            if (paymentRes.data.parcelUpdated) {
+              await Swal.fire({
+                icon: "success",
+                title: "Payment Successfully",
+                html: `<strong>Transaction ID</strong><code>${result.paymentIntent.id}</code>`,
+                confirmButtonText: "Go to My Parcels",
+              });
+              await logTracking({
+                tracking_id: parcel.tracking_id,
+                status: "payment_done",
+                details: `paid by ${user.displayName}`,
+                updated_by: user?.email,
+              });
+              navigate("/dashboard/myParcels");
+            }
           }
         }
       }

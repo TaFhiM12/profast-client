@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import { Package, User, MapPin, Truck, X, CheckCircle, Clock } from "lucide-react";
+import {
+  Package,
+  User,
+  MapPin,
+  Truck,
+  X,
+  CheckCircle,
+  Clock,
+} from "lucide-react";
 import Swal from "sweetalert2";
+import useTrackingLogger from "../../Hooks/useTrackingLogger";
+import useAuth from "../../Hooks/useAuth";
 
 const AssignRider = () => {
   const axiosSecure = useAxiosSecure();
   const [selectedParcel, setSelectedParcel] = useState(null);
+  const { logTracking } = useTrackingLogger();
+  const {user} = useAuth();
 
-  const { data: parcels = [], isLoading: loadingParcels, refetch: refetchParcels } = useQuery({
+  const {
+    data: parcels = [],
+    isLoading: loadingParcels,
+    refetch: refetchParcels,
+  } = useQuery({
     queryKey: [
       "parcels",
       { status: "pending", delivery_status: "not_collected" },
@@ -26,9 +42,9 @@ const AssignRider = () => {
     queryKey: ["riders", selectedParcel?.senderServiceCenter],
     queryFn: async () => {
       const res = await axiosSecure.get("/riders", {
-        params: { 
+        params: {
           district: selectedParcel?.senderServiceCenter,
-          work_status: "available" // Only fetch available riders
+          work_status: "available", // Only fetch available riders
         },
       });
       return res.data;
@@ -60,13 +76,23 @@ const AssignRider = () => {
           "Rider assigned and parcel marked as in-transit!",
           "success"
         );
+
+        
+        // tracking history
+        await logTracking({
+          tracking_id: selectedParcel.tracking_id,
+          status: "rider_assigned",
+          details: `Assigned to ${rider.name}`,
+          updated_by: user?.email,
+        });
+
         refetchParcels(); // Refresh the parcels list
         handleCloseModal();
       } else {
         Swal.fire("Failed", "Could not update parcel or rider.", "error");
       }
     } catch (err) {
-      Swal.fire("Error", "Something went wrong.", "error");
+      Swal.fire("Error", "Something went wrong.", err);
     }
   };
 
@@ -105,7 +131,8 @@ const AssignRider = () => {
                 No Pending Parcels
               </h3>
               <p className="text-gray-500">
-                All parcels have been assigned or there are no pending parcels to assign.
+                All parcels have been assigned or there are no pending parcels
+                to assign.
               </p>
             </div>
           ) : (
@@ -134,10 +161,10 @@ const AssignRider = () => {
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     {parcels.map((parcel, index) => (
-                      <tr 
-                        key={parcel._id} 
+                      <tr
+                        key={parcel._id}
                         className={`hover:bg-gray-50 transition-colors duration-200 ${
-                          index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
+                          index % 2 === 0 ? "bg-white" : "bg-gray-50/50"
                         }`}
                       >
                         <td className="px-6 py-4">
@@ -147,7 +174,9 @@ const AssignRider = () => {
                               <p className="text-sm font-semibold text-gray-900">
                                 {parcel.tracking_id}
                               </p>
-                              <p className="text-xs text-gray-500">Tracking ID</p>
+                              <p className="text-xs text-gray-500">
+                                Tracking ID
+                              </p>
                             </div>
                           </div>
                         </td>
@@ -216,25 +245,31 @@ const AssignRider = () => {
                         {parcel.status}
                       </span>
                     </div>
-                    
+
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center text-sm">
                         <User className="h-4 w-4 text-green-600 mr-2" />
                         <span className="text-gray-600">From:</span>
-                        <span className="ml-1 font-medium">{parcel.senderName}</span>
+                        <span className="ml-1 font-medium">
+                          {parcel.senderName}
+                        </span>
                       </div>
                       <div className="flex items-center text-sm">
                         <MapPin className="h-4 w-4 text-lime-600 mr-2" />
                         <span className="text-gray-600">Pickup:</span>
-                        <span className="ml-1 font-medium">{parcel.senderServiceCenter}</span>
+                        <span className="ml-1 font-medium">
+                          {parcel.senderServiceCenter}
+                        </span>
                       </div>
                       <div className="flex items-center text-sm">
                         <User className="h-4 w-4 text-purple-600 mr-2" />
                         <span className="text-gray-600">To:</span>
-                        <span className="ml-1 font-medium">{parcel.receiverName}</span>
+                        <span className="ml-1 font-medium">
+                          {parcel.receiverName}
+                        </span>
                       </div>
                     </div>
-                    
+
                     <button
                       onClick={() => handleAssignClick(parcel)}
                       className="w-full inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-lime-600 to-green-600 text-white text-sm font-medium rounded-lg hover:from-lime-700 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg"
